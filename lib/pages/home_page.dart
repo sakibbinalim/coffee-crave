@@ -24,6 +24,7 @@ class _HomePageState extends State<HomePage> {
   final List<Widget> _pages = [
     // shop page
     const ShopPage(),
+    // AddItemPage(coffeeImagePath: 'assets/images/latte.png'),
 
     // cart page
     const CartPage(),

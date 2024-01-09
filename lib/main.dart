@@ -1,5 +1,7 @@
 import 'package:coffee_crave/models/coffee_shop.dart';
 import 'package:coffee_crave/pages/home_page.dart';
+import 'package:coffee_crave/providers/quantity_provider.dart';
+import 'package:coffee_crave/utils/pallette.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -15,13 +17,16 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => CoffeeShop(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => CoffeeShop()),
+        ChangeNotifierProvider(create: (context) => QuantityProvider()),
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Coffee Crave',
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          colorScheme: ColorScheme.fromSeed(seedColor: coffeeColor),
           useMaterial3: true,
         ),
         home: const HomePage(),

@@ -1,6 +1,7 @@
 import 'package:coffee_crave/components/coffee_tile.dart';
 import 'package:coffee_crave/models/coffee.dart';
 import 'package:coffee_crave/models/coffee_shop.dart';
+import 'package:coffee_crave/pages/add_item_page.dart';
 import 'package:coffee_crave/utils/pallette.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -15,6 +16,16 @@ class ShopPage extends StatefulWidget {
 class _ShopPageState extends State<ShopPage> {
   void addItemToCart(Coffee coffee) {
     Provider.of<CoffeeShop>(context, listen: false).addItemToCart(coffee);
+  }
+
+  void goToAddItemPage(String coffeeImagePath, String coffeeName) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => AddItemPage(
+            coffeeImagePath: coffeeImagePath, coffeeName: coffeeName),
+      ),
+    );
   }
 
   @override
@@ -45,8 +56,10 @@ class _ShopPageState extends State<ShopPage> {
 
                     return CoffeeTile(
                       coffee: eachCoffee,
-                      onPressed: () => addItemToCart(eachCoffee),
-                      icon: const Icon(Icons.add),
+                      icon: const Icon(Icons.keyboard_arrow_right),
+                      onPressed: () => goToAddItemPage(
+                          eachCoffee.imagePath, eachCoffee.name),
+                      // onPressed: () => addItemToCart(eachCoffee),
                     );
                   },
                 ),
