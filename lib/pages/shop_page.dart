@@ -18,12 +18,13 @@ class _ShopPageState extends State<ShopPage> {
     Provider.of<CoffeeShop>(context, listen: false).addItemToCart(coffee);
   }
 
-  void goToAddItemPage(String coffeeImagePath, String coffeeName) {
+  void goToAddItemPage(Coffee coffee) {
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => AddItemPage(
-            coffeeImagePath: coffeeImagePath, coffeeName: coffeeName),
+          eachCoffee: coffee,
+        ),
       ),
     );
   }
@@ -57,8 +58,7 @@ class _ShopPageState extends State<ShopPage> {
                     return CoffeeTile(
                       coffee: eachCoffee,
                       icon: const Icon(Icons.keyboard_arrow_right),
-                      onPressed: () => goToAddItemPage(
-                          eachCoffee.imagePath, eachCoffee.name),
+                      onPressed: () => goToAddItemPage(eachCoffee),
                       // onPressed: () => addItemToCart(eachCoffee),
                     );
                   },

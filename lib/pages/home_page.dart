@@ -1,3 +1,4 @@
+import 'package:coffee_crave/pages/add_item_page.dart';
 import 'package:coffee_crave/pages/cart_page.dart';
 import 'package:coffee_crave/pages/shop_page.dart';
 import 'package:coffee_crave/components/my_bottom_nav_bar.dart';
@@ -24,7 +25,10 @@ class _HomePageState extends State<HomePage> {
   final List<Widget> _pages = [
     // shop page
     const ShopPage(),
-    // AddItemPage(coffeeImagePath: 'assets/images/latte.png'),
+    // AddItemPage(
+    //   coffeeImagePath: 'assets/images/latte.png',
+    //   coffeeName: 'Latte',
+    // ),
 
     // cart page
     const CartPage(),
